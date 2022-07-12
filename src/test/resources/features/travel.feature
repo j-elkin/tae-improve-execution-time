@@ -1,17 +1,17 @@
-#language: es
+#language: en
 
-Característica: Buscar tiquetes de avión
-  Como turista
-  Quiero buscar y comprar tiquetes de avión
-  Para disfrutar de mis vacaciones
+Feature: Search plane tickets
+  As tourist
+  I want to search and buy plane tickets
+  To enjoy the holidays vacations
 
   @vacation
-  Esquema del escenario: buscar vuelos en clase turista
-    Dado que John busca vuelos con las siguientes condiciones
-      | <Origen> | <Destino> | <FechaSalida> | <FechaRegreso> | <CantidadPasajeros> |
-    Cuando John selecciona los vuelos
-    ##Entonces Sandra deberia ver el mensaje <MensajeCuentaActivada>
+  Scenario Outline: Search flights
+    Given that John searches for flights with the following conditions
+      | <Origin> | <Destiny> | <DepartureDate> | <ReturnDate> | <Passengers> |
+    When John selects the flights
+    Then John should see the summary of plane tickets
 
-    Ejemplos:
-      | Origen   | Destino | FechaSalida | FechaRegreso | CantidadPasajeros |
-      | Medellin | Lima    | 20-08-2022  | 09-09-2022   | 3                 |
+    Examples:
+      | Origin | Destiny | DepartureDate | ReturnDate | Passengers |
+      | Bogota | Lima    | 20-08-2022    | 30-08-2022 | 3          |

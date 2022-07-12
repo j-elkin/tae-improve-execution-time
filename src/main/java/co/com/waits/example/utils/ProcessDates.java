@@ -3,10 +3,7 @@ package co.com.waits.example.utils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Month;
-import java.time.MonthDay;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class ProcessDates {
 
@@ -65,11 +62,10 @@ public class ProcessDates {
 
     public static void main (String [] args) {
         System.out.println("Starting...");
-        //System.out.println("date before: "+ processDates.dateOneBeforeThanDateTwo("2022-08-12", "2022-08-23"));
-        //System.out.println("date before: "+ ProcessDates.dateOneBeforeThanDateTwo("12-8-2022", "24-08-2022"));
-
-        //System.out.println("es menor: "+ProcessDates.isEqualMonthAndYear("June-2022", "09-2022"));
+        System.out.println("date before: "+ ProcessDates.dateOneBeforeThanDateTwo("12-8-2022", "24-10-2022"));
         System.out.println("Substring: "+ "15-08-2022".substring(3));
         System.out.println( ProcessDates.convertNameMonthYearToDateNumber("July 2022") );
+        System.out.println("Is minor: "+ProcessDates.isEqualMonthAndYear(ProcessDates.convertNameMonthYearToDateNumber("June 2022"), "09-2022"));
+
     }
 }

@@ -24,4 +24,19 @@ public class SearchFlightPage {
             .located(By.id("endD"));
 
 
+    public static final Target PASSENGERS = Target.the("Click to see passengers")
+            .located(By.id("dropdownPeople"));
+
+    public static final Target ADD_PASSENGER = Target.the("Add a new passenger")
+            .located(By.xpath("(//*[@data-icon='plus-circle'])[1]"));
+
+    public static final Target  CLOSE_PASSENGERS = Target.the("Close modal passengers")
+            .located(By.xpath("//button[@class='width-100 btn btn-primary']"));
+
+    public static final Target  MISSING_DATA = Target.the("Fill required data")
+            .located(By.xpath("//div[@class='text-muted lead']"));
+
+    public static final Target  ACCEPT_MISSING_DATA = Target.the("Accept Message fill required data")
+            .located(By.xpath("//button[@class='btn btn-lg btn-primary ']"));
+
 }

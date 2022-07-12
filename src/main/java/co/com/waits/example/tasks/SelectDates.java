@@ -34,11 +34,10 @@ public class SelectDates implements Task {
         int isEqualMonthAndYear = ProcessDates.isEqualMonthAndYear(monthYearInCalendarNumberOne, firstDateToSelect.substring(3));
         while (isEqualMonthAndYear != 0) {
             actor.attemptsTo(Click.on( isEqualMonthAndYear < 0 ? NEXT_MONTH : PREVIOUS_MONTH));
-            actor.attemptsTo(Pause.forTime(500));
+            actor.attemptsTo(Pause.forTime(500));//It's necessary
             firstMonthName = MONTH_ONE.resolveFor(actor).getText().split("\\n")[0];
             monthYearInCalendarNumberOne = ProcessDates.convertNameMonthYearToDateNumber(firstMonthName);
             isEqualMonthAndYear = ProcessDates.isEqualMonthAndYear(monthYearInCalendarNumberOne, firstDateToSelect.substring(3));
-
         }
         String dayToSelect = firstDateToSelect.split("-")[0];
         dayToSelect = dayToSelect.startsWith("0") ? dayToSelect.replace("0", "") : dayToSelect ;
@@ -47,10 +46,7 @@ public class SelectDates implements Task {
 
         //Selecting the second date
         String secondMonthName = MONTH_TWO.resolveFor(actor).getText().split("\\n")[0];
-        System.out.println(secondMonthName);
         String monthYearInCalendarNumberTwo = ProcessDates.convertNameMonthYearToDateNumber(secondMonthName);
-        System.out.println(monthYearInCalendarNumberTwo);
-
         dayToSelect = secondDateToSelect.split("-")[0];
         dayToSelect = dayToSelect.startsWith("0") ? dayToSelect.replace("0", "") : dayToSelect ;
 
@@ -60,11 +56,10 @@ public class SelectDates implements Task {
             isEqualMonthAndYear = ProcessDates.isEqualMonthAndYear(monthYearInCalendarNumberTwo, secondDateToSelect.substring(3));
             while (isEqualMonthAndYear != 0) {
                 actor.attemptsTo(Click.on(isEqualMonthAndYear < 0 ? NEXT_MONTH : PREVIOUS_MONTH));
-                actor.attemptsTo(Pause.forTime(500));
+                actor.attemptsTo(Pause.forTime(500));//It's necessary
                 secondMonthName = MONTH_TWO.resolveFor(actor).getText().split("\\n")[0];
-                System.out.println("nuevamente mes 2:" + secondMonthName);
-                isEqualMonthAndYear = ProcessDates.isEqualMonthAndYear(ProcessDates.convertNameMonthYearToDateNumber(secondMonthName), secondDateToSelect.substring(3));
-                System.out.println("isEqualMonthAndYear: " + isEqualMonthAndYear);
+                monthYearInCalendarNumberTwo = ProcessDates.convertNameMonthYearToDateNumber(secondMonthName);
+                isEqualMonthAndYear = ProcessDates.isEqualMonthAndYear(monthYearInCalendarNumberTwo, secondDateToSelect.substring(3));
             }
             actor.attemptsTo(Click.on(DAY_OF_MONTH.of(SECOND_VISIBLE_MONTH, dayToSelect)));
         }
