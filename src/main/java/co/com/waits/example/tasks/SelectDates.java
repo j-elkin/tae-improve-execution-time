@@ -6,8 +6,10 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static co.com.waits.example.userinterfaces.CalendarPage.*;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isCurrentlyVisible;
 
 public class SelectDates implements Task {
 
@@ -28,7 +30,7 @@ public class SelectDates implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-
+        actor.attemptsTo(WaitUntil.the(MONTH_ONE, isCurrentlyVisible()));
         String firstMonthName = MONTH_ONE.resolveFor(actor).getText().split("\\n")[0];
         String monthYearInCalendarNumberOne = ProcessDates.convertNameMonthYearToDateNumber(firstMonthName);
         int isEqualMonthAndYear = ProcessDates.isEqualMonthAndYear(monthYearInCalendarNumberOne, firstDateToSelect.substring(3));
