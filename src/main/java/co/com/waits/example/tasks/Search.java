@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.actions.SendKeys;
 import net.serenitybdd.screenplay.conditions.Check;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
@@ -86,11 +86,6 @@ public class Search implements Task {
                 .waitingForNoLongerThan(waitTime).seconds()
                 .orComplainWith(LoaderStillPresent.class, String.format("The loader still is present after %s seconds", waitTime))
         );
-
-        actor.attemptsTo(
-                Check.whether(MISSING_DATA.resolveFor(actor).isVisible())
-                        .andIfSo(Click.on(ACCEPT_MISSING_DATA),
-                                Click.on(SEARCH_FLIGHTS)));
 
     }
 }
