@@ -25,9 +25,9 @@ public class Select implements Task {
         actor.attemptsTo(
                 WaitUntil.the(CHOOSE_FLIGHT, isCurrentlyVisible()),
                 Click.on(CHOOSE_FLIGHT));
-        actor.attemptsTo(WaitUntil.the(LOADER, isNotCurrentlyVisible()).forNoMoreThan(15).seconds());
 
-        actor.attemptsTo(Scroll.to(YELLOW_TICKET));
+
+        //actor.attemptsTo(Scroll.to(YELLOW_TICKET));
 
     }
 }
