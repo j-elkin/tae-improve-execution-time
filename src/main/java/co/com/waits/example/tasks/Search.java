@@ -45,7 +45,7 @@ public class Search implements Task {
 
         actor.attemptsTo(
                 Click.on(ORIGIN),
-                Enter.theValue(flightData.get(0)).into(ORIGIN));
+                SendKeys.of(flightData.get(0)).into(ORIGIN));
 
         actor.attemptsTo(
                 WaitUntil.the(SELECT_CITY.of(flightData.get(0)), isClickable()),
@@ -53,7 +53,10 @@ public class Search implements Task {
 
         //actor.attemptsTo(Pause.forTime(300));
         actor.attemptsTo(WaitUntil.the(DESTINATION, isClickable()));
-        actor.attemptsTo(Enter.keyValues(flightData.get(1)).into(DESTINATION));
+        actor.attemptsTo(
+                Click.on(DESTINATION),
+                SendKeys.of(flightData.get(1)).into(DESTINATION));
+
         actor.attemptsTo(
                 WaitUntil.the(SELECT_CITY.of(flightData.get(1)), isClickable()),
                 Click.on(SELECT_CITY.of(flightData.get(1))));
