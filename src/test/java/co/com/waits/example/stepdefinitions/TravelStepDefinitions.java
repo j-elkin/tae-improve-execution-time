@@ -2,6 +2,7 @@ package co.com.waits.example.stepdefinitions;
 
 
 import co.com.waits.example.exceptions.SummaryNotFound;
+import co.com.waits.example.interactions.WaitLoading;
 import co.com.waits.example.questions.Summary;
 import co.com.waits.example.tasks.LoadSite;
 import co.com.waits.example.tasks.Search;
@@ -41,8 +42,8 @@ public class TravelStepDefinitions {
 
     @Then("John should see the summary of plane tickets")
     public void seeSummary() {
-        theActorInTheSpotlight().should(eventually(seeThat(Summary.ofChargesIsVisible(), is(true)))
-                .waitingForNoLongerThan(2).seconds()
+        theActorInTheSpotlight().attemptsTo(WaitLoading.modal());
+        theActorInTheSpotlight().should(seeThat(Summary.ofChargesIsVisible(), is(true))
                 .orComplainWith(SummaryNotFound.class, SUMMARY_OF_CHARGES_NOT_FOUND));
     }
 

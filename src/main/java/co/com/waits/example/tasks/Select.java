@@ -1,5 +1,6 @@
 package co.com.waits.example.tasks;
 
+import co.com.waits.example.interactions.WaitLoading;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
@@ -21,13 +22,13 @@ public class Select implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(WaitUntil.the(LOADER, isNotCurrentlyVisible()).forNoMoreThan(30).seconds());
+        actor.attemptsTo(WaitLoading.modal());
         actor.attemptsTo(
                 WaitUntil.the(CHOOSE_FLIGHT, isCurrentlyVisible()),
                 Click.on(CHOOSE_FLIGHT));
-        actor.attemptsTo(WaitUntil.the(LOADER, isNotCurrentlyVisible()).forNoMoreThan(15).seconds());
 
-        actor.attemptsTo(Scroll.to(YELLOW_TICKET));
+
+        //actor.attemptsTo(Scroll.to(YELLOW_TICKET));
 
     }
 }

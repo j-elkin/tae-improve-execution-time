@@ -5,4 +5,8 @@ public class LoaderStillPresent extends AssertionError {
     public LoaderStillPresent(String mensaje, Throwable causa) {
         super(mensaje, causa);
     }
+
+    public LoaderStillPresent(String mensaje) {
+        super(mensaje);
+    }
 }
