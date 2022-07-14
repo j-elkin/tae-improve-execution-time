@@ -42,7 +42,7 @@ public class TravelStepDefinitions {
     @Then("John should see the summary of plane tickets")
     public void seeSummary() {
         theActorInTheSpotlight().should(eventually(seeThat(Summary.ofChargesIsVisible(), is(true)))
-                .waitingForNoLongerThan(2).seconds()
+                .waitingForNoLongerThan(15).seconds()
                 .orComplainWith(SummaryNotFound.class, SUMMARY_OF_CHARGES_NOT_FOUND));
     }
 
